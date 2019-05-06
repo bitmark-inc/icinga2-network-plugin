@@ -1,6 +1,7 @@
 [![GoDoc](https://godoc.org/github.com/araujobsd/icinga2-network-plugin/plugins?status.svg)](https://godoc.org/github.com/araujobsd/icinga2-network-plugin/)
 [![GitHub issues](https://img.shields.io/github/issues/araujobsd/icinga2-network-plugin.svg)](https://github.com/araujobsd/icinga2-network-plugin/issues)
 [![GitHub forks](https://img.shields.io/github/forks/araujobsd/icinga2-network-plugin.svg)](https://github.com/araujobsd/icinga2-network-plugin/network)
+[![Go Report Card](https://goreportcard.com/badge/github.com/araujobsd/icinga2-network-plugin)](https://goreportcard.com/report/github.com/araujobsd/icinga2-network-plugin)
 
 icinga2-network-plugin
 ================
