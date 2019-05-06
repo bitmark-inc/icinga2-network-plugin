@@ -54,7 +54,7 @@ var (
 	progname = strings.Split(os.Args[0], "/")
 )
 
-type DataOutput struct {
+type dataOutput struct {
 	Jsonversion   string `json:"jsonversion"`
 	Vnstatversion string `json:"vnstatversion"`
 	Interface     string `json:"interface"`
@@ -91,15 +91,17 @@ func help() {
 	fmt.Println("	-rc: Incoming Speed Critical (KiB/s)")
 	fmt.Println("	-tw: Outgoing Speed Warning (KiB/s)")
 	fmt.Println("	-tc: Outgoing Speed Critical (KiB/s)")
-	fmt.Println("	-i: Interface this should monitor\n")
+	fmt.Println("	-i: Interface this should monitor")
+	fmt.Println("")
 	fmt.Println("Note:")
-	fmt.Println("The units you specify must be the same units as configured for vnstat(1)\n")
+	fmt.Println("The units you specify must be the same units as configured for vnstat(1)")
+	fmt.Println("")
 	fmt.Println("Usage:")
 	fmt.Printf("./%s -rw=<incomingwarning> -tw=<outgoingwarning> -rc=<incomingcritical> -tc=<outgoingcritical> -i=<interface>\n", progname[len(progname)-1])
 }
 
-func runCmd(iface *string) (DataOutput, error) {
-	var data DataOutput
+func runCmd(iface *string) (dataOutput, error) {
+	var data dataOutput
 
 	cmdout, err := exec.Command(vnstat, "-tr", "-i", *iface, "--json", "-ru", "1").Output()
 	if err != nil {
@@ -136,9 +138,9 @@ func tokbits(rate string) float64 {
 	return sconv
 }
 
-func calcBandwith(data DataOutput, rw *string, rc *string, tw *string, tc *string) (string, int) {
+func calcBandwith(data dataOutput, rw *string, rc *string, tw *string, tc *string) (string, int) {
 	var message string
-	var exitErr int = 0
+	var exitErr int
 
 	message = fmt.Sprintf("OK -  The current RX is %s and TX is %s", data.Rx.Ratestring, data.Tx.Ratestring)
 
