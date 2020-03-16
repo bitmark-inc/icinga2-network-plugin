@@ -44,7 +44,6 @@ import (
 
 const (
 	author       = "Marcelo Araujo <araujo__FreeBSD.org>"
-	version      = "0.1"
 	vnstat       = "/usr/local/bin/vnstat"
 	exitOK       = 0
 	exitWarning  = 1
@@ -53,6 +52,9 @@ const (
 
 var (
 	progname = strings.Split(os.Args[0], "/")
+
+	// set by the linker: go build -ldflags "-X main.version=M.N" ./...
+	version = "zero" // do not change this value
 )
 
 type dataOutput struct {
